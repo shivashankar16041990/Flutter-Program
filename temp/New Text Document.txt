@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+import 'package:myapp3/app_screen/NoteList.dart';
+import 'package:myapp3/app_screen/NotesDetails.dart';
+
+void main()
+{
+  runApp( MaterialApp(
+      title: "Notekeeper",
+      home:NoteKeeper()));
+
+
+
+}
+
+class NoteKeeper extends StatelessWidget {
+
+
+  int itemcount = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return
+       Scaffold(
+          appBar: AppBar(
+              title: const Text("Notes")),
+          body: NoteList(),
+        floatingActionButton:  FloatingActionButton(
+          child: const Icon(
+              Icons.add),
+          onPressed: (){
+          debugPrint("FAB is clicked");
+          Navigator.push(context,MaterialPageRoute(builder: (context){
+
+            return NoteDetails("Add Note");
+
+          }));
+
+
+        },),
+
+
+      );
+  }
+
+}

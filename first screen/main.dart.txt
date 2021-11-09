@@ -1,0 +1,22 @@
+import 'package:myapp3/app_screen/first_screen.dart';
+
+import './app_screen/first_screen.dart';
+void main() =>  runApp(Myflutter());
+
+
+class Myflutter extends StatelessWidget
+{
+  @override
+  Widget build(BuildContext context) {
+          return
+            MaterialApp(
+                title: "My Flutter App",
+                debugShowCheckedModeBanner: false,
+                home:Scaffold(appBar:AppBar(title: Text("Myapp")),
+                    body:new FirstScreen()
+                )
+            );
+    throw UnimplementedError();
+  }
+
+}

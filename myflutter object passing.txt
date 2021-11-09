@@ -1,0 +1,33 @@
+import 'package:flutter/material.dart';
+
+
+void main() =>  runApp(Myflutter());
+
+
+class Myflutter extends StatelessWidget
+{
+  @override
+  Widget build(BuildContext context) {
+          return
+            MaterialApp(
+                title: "My Flutter App",
+                debugShowCheckedModeBanner: false,
+                home:Scaffold(appBar:AppBar(title: Text("Myapp")),
+                    body:Material(color: Colors.lightBlueAccent,
+                        child: Center(
+                            child:Text(
+                                "my first flutter App \n Welcome to flutter ",
+                                textDirection: TextDirection.ltr,
+                                style: TextStyle(color: Colors.blueAccent,
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: 84,
+                                    fontWeight: FontWeight.bold
+                                )
+                            )
+                        )
+                    )
+                ));
+    throw UnimplementedError();
+  }
+
+}
