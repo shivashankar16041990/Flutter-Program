@@ -1,0 +1,35 @@
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+
+class FirstScreen extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Material(color: Colors.lightBlueAccent,
+        child: Center(
+            child: Text(
+                generate_no(),
+                textDirection: TextDirection.ltr,
+                style: TextStyle(color: Colors.tealAccent,
+                    fontStyle: FontStyle.italic,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold
+                )
+            )
+        )
+    );
+
+
+  }
+    String generate_no()
+    {
+      var random=Random();
+      return "Todays lucky no is ${random.nextInt(50)}";
+    }
+
+
+
+
+
+
+}
