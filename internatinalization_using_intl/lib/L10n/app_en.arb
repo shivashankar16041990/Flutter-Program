@@ -1,0 +1,25 @@
+{
+    "language":"Language",
+    "@language":{
+    "description":"the current Language"},
+
+     "brother":"Brother",
+        "@brother":{
+        "description":"the brother in english"},
+
+        "english":"English",
+                "@english":{
+                "description":"the english  in english"},
+         "marathi":"Marathi",
+               "@marathi":{
+                        "description":"the english  in Marathi"},
+               "hindi":"Hindi",
+                              "@hindi":{
+                                       "description":"the english  in Hindi"},
+
+              "arabicurdu":"Arabic/urdu",
+                                            "@arabiurdu":{
+                                                     "description":"the english  in Arabic/urdu"}
+
+
+}
