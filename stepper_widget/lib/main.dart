@@ -1,54 +1,71 @@
 import 'package:flutter/material.dart';
-import 'stepper_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stepper_widget/bloc/event.dart';
+
+import 'bloc/bloc.dart';
 
 void main() {
-  runApp(
-      BlocProvider<stepper_bloc>(create: (_) => stepper_bloc(), child:
-      MaterialApp(home: Scaffold(body: const MyApp()))));
+  runApp(BlocProvider(
+    create: (_) => StepIndexBloc(0),
+    child: MaterialApp(
+      home: Scaffold(
+        body: MyApp(),
+      ),
+    ),
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp();
-
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          var steppertype = StepperType.vertical;
-          if (constraints.maxWidth > 550) {
-            steppertype = StepperType.horizontal;
-          }
-
-          return BlocBuilder<stepper_bloc, int>(builder: (context, value) {
-            return  Stepper(
-              type: steppertype,
-              currentStep: value,
-              onStepCancel: () {if(value!=0 )
-                {
-                BlocProvider.of<stepper_bloc>(context).add(decrement());}
-
-              },
-              onStepContinue: () {if( value!=2) {
-                BlocProvider.of<stepper_bloc>(context).add(increment());
-              }
-              },
-              steps: [
-                const Step(title:const  Text("Login"),
-                    content:const  Text("Login data"),
-                    state: StepState.editing),
-                const Step(title: const Text("Personal Info"),
-                    content: const Text("Personal Info"),
-                    state: StepState.editing),
-                const  Step(title: const Text("Qualification Info"),
-                    content: const Text("Qualification Info"),
-                    state: StepState.editing),
-
-
-              ],);
-          });
-        });
+    return Center(
+      child: Stepper(
+        steps: [
+          Step(
+              title: Text("Personal Dat a"),
+              content: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(hintText: "name"),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(hintText: "mail"),
+                  )
+                ],
+              )),
+          Step(
+              title: Text("Address"),
+              content: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(hintText: "address"),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(hintText: "pin"),
+                  )
+                ],
+              )),
+          Step(
+              title: Text("Payment"),
+              content: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(hintText: "Upi id"),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(hintText: "amount"),
+                  )
+                ],
+              )),
+        ],
+        onStepCancel: () {
+          BlocProvider.of<StepIndexBloc>(context).add(decreament());
+        },
+        currentStep: context.watch<StepIndexBloc>().state,
+        onStepContinue: () {
+          BlocProvider.of<StepIndexBloc>(context).add(increament());
+        },
+      ),
+    );
   }
-  }
-
-
+}
